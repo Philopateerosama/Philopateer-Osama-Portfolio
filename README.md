@@ -4,6 +4,7 @@ A modern, responsive portfolio website showcasing my work as a Computer Science 
 
 ## Features
 
+- **Bilingual Support**: Full English/Arabic language switching with RTL layout support
 - **Dark/Light Mode**: Theme toggle with user preference persistence
 - **Responsive Design**: Optimized for all screen sizes and devices
 - **Project Filtering**: Interactive project categorization (All, Embedded, Web)

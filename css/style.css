@@ -120,8 +120,153 @@ section h3 { margin-top:0; font-family: "Libre Baskerville", Georgia, serif; fon
 /* Toast */
 .toast { position:fixed; bottom:1.25rem; left:50%; transform:translateX(-50%); background:var(--color-primary); color:#fff; padding:0.6rem 1rem; border-radius:10px; box-shadow:var(--shadow); }
 
+/* RTL Support */
+[dir="rtl"] { 
+  overflow-x: hidden; 
+  width: 100%;
+}
+[dir="rtl"] .brand { flex-direction: row-reverse; }
+[dir="rtl"] .hero-content { flex-direction: row-reverse; }
+[dir="rtl"] .contact-cards { direction: rtl; }
+[dir="rtl"] .contact-card { flex-direction: row-reverse; }
+[dir="rtl"] .skill-grid { direction: rtl; }
+[dir="rtl"] .projects-grid { direction: rtl; }
+[dir="rtl"] .filter-row { direction: rtl; }
+[dir="rtl"] .chips { direction: rtl; }
+[dir="rtl"] .hero-ctas { direction: rtl; }
+[dir="rtl"] .top-controls { direction: rtl; }
 
+/* RTL Mobile Fixes */
+@media (max-width: 768px) {
+  [dir="rtl"] .hero-content { 
+    flex-direction: column-reverse; 
+    text-align: center; 
+  }
+  [dir="rtl"] .brand { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  [dir="rtl"] .header-inner {
+    text-align: center;
+  }
+  [dir="rtl"] .top-controls {
+    justify-content: center;
+    direction: ltr; /* Keep buttons in logical order */
+  }
+}
 
+/* Arabic font support */
+[data-lang="ar"] {
+  font-family: "Noto Sans Arabic", "Cairo", "Amiri", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.6;
+}
+
+/* Arabic mobile font adjustments */
+@media (max-width: 768px) {
+  [data-lang="ar"] {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  [data-lang="ar"] .hero-text h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  [data-lang="ar"] .lead {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  [data-lang="ar"] .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-lang="ar"] .hero-text h2 {
+    font-size: 1.3rem;
+  }
+  [data-lang="ar"] .lead {
+    font-size: 0.95rem;
+  }
+}
+
+/* Smooth transitions for language/direction changes */
+html {
+  transition: direction 0.3s ease;
+}
+
+body {
+  transition: all 0.3s ease;
+}
+
+/* Better RTL layout stability */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .container {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-text {
+  text-align: right;
+}
+
+[dir="rtl"] .lead {
+  text-align: right;
+}
+
+[dir="rtl"] section {
+  text-align: right;
+}
+
+[dir="rtl"] .project-desc {
+  text-align: right;
+}
+
+[dir="rtl"] .timeline {
+  text-align: right;
+}
+
+/* RTL Mobile specific fixes */
+@media (max-width: 600px) {
+  [dir="rtl"] {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  [dir="rtl"] .hero-text {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  [dir="rtl"] .lead {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  [dir="rtl"] section {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  [dir="rtl"] .project-desc {
+    text-align: right;
+    line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
+  }
+  [dir="rtl"] .timeline {
+    text-align: right;
+    padding-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  [dir="rtl"] .container {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+}
 
 /* Dark mode */
 body.dark {
@@ -322,4 +467,9 @@ body.dark .site-name {
   .chips { gap: 0.25rem; }
   .chips li { padding: 0.15rem 0.4rem; font-size: 0.8rem; }
   
+  /* Fix Arabic RTL overflow on very small screens */
+  [dir="rtl"] * {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
 }
