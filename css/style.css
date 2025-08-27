@@ -38,7 +38,7 @@ body {
 }
 
 /* Container */
-.container { max-width:var(--max-w); margin:0 auto; padding:2rem 1rem; width: 100%; box-sizing: border-box; }
+.container { max-width:var(--max-w); margin:0 auto; padding:2rem 1rem; width: 100%; box-sizing: border-box; min-height: auto; }
 
 /* Header */
 .site-header { border-bottom:1px solid rgba(11,31,59,0.06); background:transparent; position:sticky; top:0; z-index:50; backdrop-filter: blur(4px); width: 100%; overflow-x: hidden; }
@@ -66,7 +66,7 @@ body {
 .hero-avatar img { width:200px; height:200px; border-radius:999px; object-fit:cover; object-position:center top; border:6px solid var(--color-bg); box-shadow:var(--shadow); }
 
 /* Sections */
-section { margin:2rem 0; padding:1.25rem; background:transparent; border-radius:var(--radius); }
+section { margin:2rem 0; padding:1.25rem; background:transparent; border-radius:var(--radius); min-height: fit-content; }
 section h3 { margin-top:0; font-family: "Libre Baskerville", Georgia, serif; font-size:1.05rem; color:var(--color-primary); font-weight: 600; }
 
 /* Skills */
@@ -107,9 +107,58 @@ section h3 { margin-top:0; font-family: "Libre Baskerville", Georgia, serif; fon
 [dir="rtl"] .hero-ctas { direction: rtl; }
 [dir="rtl"] .top-controls { direction: rtl; }
 
+/* RTL Mobile Fixes */
+@media (max-width: 768px) {
+  [dir="rtl"] .hero-content { 
+    flex-direction: column-reverse; 
+    text-align: center; 
+  }
+  [dir="rtl"] .brand { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  [dir="rtl"] .header-inner {
+    text-align: center;
+  }
+  [dir="rtl"] .top-controls {
+    justify-content: center;
+    direction: ltr; /* Keep buttons in logical order */
+  }
+}
+
 /* Arabic font support */
 [data-lang="ar"] {
   font-family: "Noto Sans Arabic", "Cairo", "Amiri", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.6;
+}
+
+/* Arabic mobile font adjustments */
+@media (max-width: 768px) {
+  [data-lang="ar"] {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  [data-lang="ar"] .hero-text h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  [data-lang="ar"] .lead {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  [data-lang="ar"] .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-lang="ar"] .hero-text h2 {
+    font-size: 1.3rem;
+  }
+  [data-lang="ar"] .lead {
+    font-size: 0.95rem;
+  }
 }
 
 /* Smooth transitions for language/direction changes */
@@ -150,12 +199,33 @@ body {
   text-align: right;
 }
 
+/* RTL Mobile specific fixes */
+@media (max-width: 600px) {
+  [dir="rtl"] .hero-text {
+    text-align: center;
+  }
+  [dir="rtl"] .lead {
+    text-align: center;
+  }
+  [dir="rtl"] section {
+    text-align: center;
+  }
+  [dir="rtl"] .project-desc {
+    text-align: right;
+    line-height: 1.6;
+  }
+  [dir="rtl"] .timeline {
+    text-align: right;
+    padding-right: 0;
+  }
+}
+
 /* Dark mode */
 body.dark {
-  --color-bg: #0a1628;
-  --color-char: #f8f9fa;
-  --muted: #b8c5d1;
-  background: #0a1628;
+  --color-bg: #1a202c;
+  --color-char: #f7fafc;
+  --muted: #a0aec0;
+  background: #1a202c;
   color: var(--color-char);
 }
 
@@ -176,27 +246,27 @@ body.dark .btn.ghost:hover {
 }
 
 body.dark .skill-card { 
-  background: #1a2332; 
-  border: 1px solid rgba(200, 169, 106, 0.2);
+  background: #2d3748; 
+  border: 1px solid rgba(200, 169, 106, 0.3);
   color: var(--color-char);
 }
 
 body.dark .project-card { 
-  background: #1a2332; 
-  border: 1px solid rgba(200, 169, 106, 0.2);
+  background: #2d3748; 
+  border: 1px solid rgba(200, 169, 106, 0.3);
   color: var(--color-char);
 }
 
 body.dark .contact-card { 
-  background: #1a2332; 
-  border: 1px solid rgba(200, 169, 106, 0.2);
+  background: #2d3748; 
+  border: 1px solid rgba(200, 169, 106, 0.3);
   color: var(--color-char);
 }
 
 body.dark .site-header {
   border-bottom-color: rgba(248, 249, 250, 0.1);
   backdrop-filter: blur(8px);
-  background: rgba(10, 22, 40, 0.8);
+  background: rgba(26, 32, 44, 0.95);
 }
 
 body.dark .site-footer {
