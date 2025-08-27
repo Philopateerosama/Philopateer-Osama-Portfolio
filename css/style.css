@@ -148,10 +148,14 @@ section h3 { margin-top:0; font-family: "Libre Baskerville", Georgia, serif; fon
   }
   [dir="rtl"] .header-inner {
     text-align: center;
+    align-items: center;
   }
   [dir="rtl"] .top-controls {
     justify-content: center;
     direction: ltr; /* Keep buttons in logical order */
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
   }
 }
 
@@ -398,15 +402,18 @@ body.dark .site-name {
     text-align: center;
   }
   .top-controls { 
-    flex-wrap: wrap; 
-    gap: 0.75rem; 
+    flex-wrap: nowrap; 
+    gap: 0.5rem; 
     justify-content: center;
     width: 100%;
+    display: flex;
+    align-items: center;
   }
   .btn { 
     min-height: 44px; 
     padding: 0.75rem 1rem; 
     font-size: 0.95rem;
+    white-space: nowrap;
   }
   .contact-cards { 
     flex-direction: column; 
@@ -438,6 +445,18 @@ body.dark .site-name {
   .project-card { padding: 1.25rem; }
   .project-desc { font-size: 0.9rem; line-height: 1.5; }
   .btn.small { min-height: 40px; padding: 0.6rem 0.8rem; }
+  
+  /* Force buttons to stay on same line */
+  .top-controls {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .btn {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.75rem;
+  }
 }
 
 /* Very small screens */
