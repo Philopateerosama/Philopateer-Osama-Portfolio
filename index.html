@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philopateer Osama - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fonts: Playfair Display for elegant headings, Lato for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -15,99 +16,95 @@
         }
 
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --gold-color: #f39c12;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --bg-light: #ecf0f1;
-            --bg-dark: #34495e;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
+            /* Coffee Palette - Softer & Minimalist */
+            --bg-cream: #FDFBF7;       /* Off-white base */
+            --bg-latte: #F4EBE1;       /* Light warm beige */
+            --text-espresso: #2C1E16;  /* Deep dark brown headings */
+            --text-mocha: #5D4037;     /* Medium brown text */
+            --accent-caramel: #B07D54; /* Warm caramel highlights */
+            
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         body {
-            font-family: 'Source Sans Pro', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-mocha);
+            line-height: 1.8;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-espresso);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 850px; /* Very narrow and elegant for reading */
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent;
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 2rem 0;
             transition: var(--transition);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(176, 125, 84, 0.1);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-logo .logo-text {
+        .nav-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-espresso);
+            text-decoration: none;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            position: relative;
+            color: var(--text-mocha);
+            font-size: 0.95rem;
             transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--secondary-color);
+            position: relative;
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
             width: 0;
-            height: 2px;
-            background: var(--secondary-color);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-caramel);
             transition: var(--transition);
         }
 
@@ -115,1190 +112,677 @@
             width: 100%;
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        .nav-link:hover {
+            color: var(--text-espresso);
         }
 
-        .bar {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            padding-top: 80px;
         }
 
         .hero-title {
-            font-size: 4rem;
-            color: var(--white);
+            font-size: clamp(3rem, 6vw, 4.8rem);
             margin-bottom: 1rem;
+            letter-spacing: -1px;
             line-height: 1.1;
         }
 
-        .title-line {
+        .hero-title span {
             display: block;
         }
 
-        .highlight {
-            background: linear-gradient(135deg, var(--gold-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-title .highlight {
+            color: var(--accent-caramel);
+            font-style: italic;
+            font-weight: 400;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-espresso);
+            margin-bottom: 2rem;
+            font-family: 'Lato', sans-serif;
             font-weight: 300;
+            letter-spacing: 1px;
+            border-left: 2px solid var(--accent-caramel);
+            padding-left: 1rem;
         }
 
         .hero-description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 300;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 0.8rem 2.5rem;
+            font-size: 0.95rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
             cursor: pointer;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold-color), var(--accent-color));
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--text-espresso);
+            color: var(--text-espresso);
+            border-radius: 2px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
+        .btn:hover {
+            background-color: var(--text-espresso);
+            color: var(--bg-cream);
         }
 
-        .profile-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow);
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--gold-color), var(--accent-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 3rem;
-            color: var(--white);
-        }
-
-        .profile-info h3 {
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-info p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .scroll-arrow {
-            width: 30px;
-            height: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-top: none;
-            border-left: none;
-            transform: rotate(45deg);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) rotate(45deg) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) rotate(45deg) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) rotate(45deg) translateY(-5px);
-            }
-        }
-
-        /* Section Styles */
         section {
-            padding: 6rem 0;
+            padding: 10rem 0; /* Huge padding for elegant scrolling */
+            position: relative;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-caramel);
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .section-title {
             font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            color: var(--text-espresso);
+            font-style: italic;
+            font-weight: 400;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
+        .text-content p {
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
             font-weight: 300;
         }
 
-        /* About Section */
-        .about {
-            background: var(--bg-light);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        .about-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-placeholder {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
-
-        /* Experience Section */
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
+        .timeline-item {
             position: relative;
+            padding-left: 3rem;
+            margin-bottom: 5rem; /* Spacious */
         }
 
-        .timeline::before {
+        .timeline-item::before {
             content: '';
             position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--secondary-color);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 50%;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-start;
-            padding-left: 50%;
-            padding-right: 0;
-        }
-
-        .timeline-marker {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background: var(--secondary-color);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            box-shadow: var(--shadow);
-        }
-
-        .timeline-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            max-width: 400px;
-            position: relative;
-            width: 100%;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 2rem;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 2rem;
+            left: 0;
+            top: 10px;
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent-caramel);
         }
 
         .timeline-date {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-caramel);
+            margin-bottom: 0.8rem;
         }
 
         .timeline-title {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-company {
-            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
             font-weight: 600;
+        }
+
+        .timeline-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-espresso);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .timeline-desc {
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        .services-main-title {
+            font-size: 2rem;
             margin-bottom: 1rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-espresso);
         }
 
-        .timeline-description {
-            line-height: 1.6;
+        .services-desc {
+            font-size: 1.15rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            max-width: 700px;
         }
 
-        /* Skills Section */
-        .skills {
-            background: var(--bg-light);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .category-title {
+        .services-list {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-size: 1.3rem;
+            flex-direction: column;
+            gap: 3rem;
         }
 
-        .category-title i {
+        .service-item {
+            border-left: 2px solid var(--accent-caramel);
+            padding-left: 1.5rem;
+        }
+
+        .service-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-espresso);
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+        }
+
+        .service-detail {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-mocha);
+        }
+
+        .skills-group {
+            margin-bottom: 4rem;
+        }
+        
+        .skills-group h3 {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            color: var(--text-espresso);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
         }
 
         .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: var(--bg-light);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
-            border-radius: 4px;
-            width: 0;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-item {
+            font-size: 1.1rem;
+            color: var(--text-mocha);
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 10px;
+            font-weight: 300;
         }
 
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
-            border-radius: 50%;
+        .skill-item i {
+            color: var(--accent-caramel);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-wrapper {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.5rem;
+            flex-direction: column;
+            gap: 3rem;
         }
 
-        .contact-details h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .contact-line {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .contact-details p, .contact-details a {
-            color: var(--text-light);
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-caramel);
+        }
+
+        .contact-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-espresso);
             text-decoration: none;
             transition: var(--transition);
-        }
-        
-        .contact-details a:hover {
-            color: var(--secondary-color);
+            width: fit-content;
+            font-style: italic;
         }
 
-        /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 2rem 0;
+        .contact-link:hover {
+            color: var(--accent-caramel);
+        }
+
+        footer {
+            padding: 4rem 0;
             text-align: center;
+            color: var(--text-mocha);
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(176, 125, 84, 0.1);
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+        /* Elements start hidden, pushed down significantly */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(60px); 
+            /* Extra smooth and slow transition curve */
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
+        /* When the observer adds this class, they float up */
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
+            .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; }
+            .hamburger .bar { width: 24px; height: 1px; background: var(--text-espresso); transition: var(--transition); }
             .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: var(--shadow);
-                padding: 2rem 0;
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background: var(--bg-cream); flex-direction: column; justify-content: center;
+                align-items: center; transition: var(--transition);
             }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .about-stats {
-                justify-content: center;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                padding-left: 50px;
-                padding-right: 0;
-                justify-content: flex-start;
-            }
-            
-            .timeline-item:nth-child(even) {
-                padding-left: 50px;
-                padding-right: 0;
-                justify-content: flex-start;
-            }
-            
-            .timeline-marker {
-                left: 20px;
-            }
-            
-            .timeline-content {
-                margin-left: 0;
-                margin-right: 0;
-            }
-            
-            .timeline-item:nth-child(even) .timeline-content {
-                margin-left: 0;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content {
-                margin-right: 0;
-            }
-            
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                justify-content: center;
-                text-align: center;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .about-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-menu.active { right: 0; }
+            .nav-link { font-size: 1.5rem; color: var(--text-espresso); }
+            section { padding: 6rem 0; }
+            .section-title { font-size: 2.5rem; }
+            .contact-link { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">PO</span>
-            </div>
+            <a href="#home" class="nav-logo">PO.</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="title-line">Philopateer</span>
-                        <span class="title-line highlight">Osama Onsy</span>
-                    </h1>
-                    <p class="hero-subtitle">Computer Science Student & Cybersecurity Specialist</p>
-                    <p class="hero-description">
-                        Computer Science student specializing in Cybersecurity, Red Teaming, and Penetration Testing. Proficient in Python and C++ with hands-on training in network security and offensive methodologies, ready to identify vulnerabilities and contribute to robust security postures.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" id="downloadCV">
-                            <i class="fas fa-download"></i>
-                            Download CV
-                        </button>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="profile-avatar">
-                            <i class="fas fa-user-secret"></i>
-                        </div>
-                        <div class="profile-info">
-                            <h3>Philopateer Osama</h3>
-                            <p>Cybersecurity Specialist</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="container">
+            <h1 class="hero-title reveal-element">
+                <span>Philopateer</span>
+                <span class="highlight">Osama Onsy</span>
+            </h1>
+            <div class="hero-subtitle reveal-element">
+                Cybersecurity Specialist & Software Developer
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+            <p class="hero-description reveal-element">
+                Bridging the gap between active defense and resilient software architecture. I specialize in offensive methodologies, Red Teaming, and building secure solutions to safeguard critical systems.
+            </p>
+            <div class="reveal-element">
+                <button class="btn" id="downloadCV">
+                    Download Resumé <i class="fa-solid fa-arrow-down" style="font-size: 0.8rem;"></i>
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" style="background-color: var(--bg-latte);">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">Introduction</span>
                 <h2 class="section-title">About Me</h2>
-                <div class="section-subtitle">Professional Summary</div>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-description">
-                        As a Computer Science student at the Egyptian Chinese University (ECU) with an expected graduation in June 2027, my passion lies in offensive security, penetration testing, and safeguarding critical infrastructures. I combine a strong foundational knowledge of software development and system architecture with highly focused security training.
-                    </p>
-                    <p class="about-description">
-                        I am actively gaining practical exposure through comprehensive training programs, such as my SOC intensive training at MCDR, and I am developing intelligent active defense systems for my graduation project. By scripting my own tools in Python and C++ and participating in competitive programming, I continuously push my technical boundaries to solve complex algorithmic and security challenges.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">CS Student</div>
-                            <div class="stat-label">ECU 2027</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">160+ Hrs</div>
-                            <div class="stat-label">MCDR SOC Training</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1st Place</div>
-                            <div class="stat-label">Robotics Championship</div>
-                        </div>
+            <div class="text-content">
+                <p class="reveal-element">
+                    I am a dedicated Cybersecurity Specialist with a strong foundation in software engineering. My approach to security is rooted in understanding how systems are built, allowing me to effectively identify vulnerabilities and engineer robust defenses.
+                </p>
+                <p class="reveal-element">
+                    With a background in Computer Science, my professional journey is intensely focused on mastering active defense mechanisms, penetration testing, and secure application development.
+                </p>
+                <p class="reveal-element">
+                    Whether I am analyzing network traffic in a SOC environment, developing intelligent defense mechanisms like LabyrinthAI, or crafting smooth user experiences in mobile applications, my goal remains the same: delivering high-quality, secure, and impactful technological solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">What I Do</span>
+                <h2 class="section-title">Services</h2>
+            </div>
+            
+            <div class="services-content">
+                <h3 class="services-main-title reveal-element">Web Application Penetration Testing</h3>
+                <p class="services-desc reveal-element">
+                    I help organizations identify, exploit, and remediate critical security flaws before malicious actors can. My approach combines automated scanning with deep, logic-based manual testing to ensure your web assets remain uncompromised.
+                </p>
+                
+                <div class="services-list">
+                    <div class="service-item reveal-element">
+                        <h4 class="service-name">Vulnerability Assessment</h4>
+                        <p class="service-detail">Thorough mapping and scanning of your web infrastructure to uncover misconfigurations, exposed endpoints, and OWASP Top 10 vulnerabilities (such as SQLi, XSS, and CSRF).</p>
                     </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-shield-virus"></i>
+                    <div class="service-item reveal-element">
+                        <h4 class="service-name">Exploitation & Ethical Hacking</h4>
+                        <p class="service-detail">Simulating real-world cyber attacks to bypass Web Application Firewalls (WAFs), escalate privileges, and test the true resilience of your systems in a controlled, professional environment.</p>
+                    </div>
+                    <div class="service-item reveal-element">
+                        <h4 class="service-name">Actionable Mitigation Reporting</h4>
+                        <p class="service-detail">Providing detailed, executive-friendly reports equipped with step-by-step reproduction guides, risk assessments, and robust, developer-ready remediation strategies.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="experience" style="background-color: var(--bg-latte);">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Experience & Projects</h2>
-                <div class="section-subtitle">My Journey & Achievements</div>
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">Timeline</span>
+                <h2 class="section-title">Experience & Training</h2>
             </div>
+            
             <div class="timeline">
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Aug 2026 - Present</div>
+                    <h3 class="timeline-title">SOC Trainee</h3>
+                    <div class="timeline-subtitle">MCDR (Misr for Central Clearing, Depository and Registry)</div>
+                    <p class="timeline-desc">
+                        Participating in an intensive 160-hour cybersecurity training program, emphasizing Security Operations Center (SOC) fundamentals and incident response workflows. Analyzing simulated network threats using log analysis techniques.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Jul 2025 - Aug 2025</div>
+                    <h3 class="timeline-title">Software Developer Intern</h3>
+                    <div class="timeline-subtitle">HITS Solutions</div>
+                    <p class="timeline-desc">
+                        Completed a comprehensive 160-hour software development program geared toward applied coding practices and system architecture. Collaborated to debug code and implement new software modules.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Sep 2025</div>
+                    <h3 class="timeline-title">Cyber Security Training</h3>
+                    <div class="timeline-subtitle">National Telecommunication Institute (NTI)</div>
+                    <p class="timeline-desc">
+                        90 hours of hands-on training in networking security, penetration testing basics, SOC operations, and ethical hacking.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">May 2025</div>
+                    <h3 class="timeline-title">PHP Full Stack Professional</h3>
+                    <div class="timeline-subtitle">American Academy for Engineering Training</div>
+                    <p class="timeline-desc">
+                        Completed a 40-hour intensive backend and full-stack development program with an "Excellent" grade.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Oct 2023 - Mar 2024</div>
+                    <h3 class="timeline-title">Competitive Programming Trainee</h3>
+                    <div class="timeline-subtitle">ECU & Coach Academy</div>
+                    <p class="timeline-desc">
+                        Solved over 50 complex algorithmic problems using C++. Developed robust code under strict time constraints, reducing time and space complexity in targeted challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">Portfolio</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Aug 2026 - Present</div>
+                    <h3 class="timeline-title">LabyrinthAI</h3>
+                    <div class="timeline-subtitle">Active Defense System (Graduation Project)</div>
+                    <p class="timeline-desc">
+                        Researching and architecting an intelligent active defense system integrating digital twin technology and reinforcement learning for advanced threat detection. Developing LLM-based data generation to simulate attack scenarios.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Jan 2025 - May 2025</div>
+                    <h3 class="timeline-title">El-Lamma Multiplayer Game</h3>
+                    <div class="timeline-subtitle">Mobile Application Development</div>
+                    <p class="timeline-desc">
+                        Built and deployed a cross-platform Android multiplayer card game using Flutter and Firebase, handling real-time state for concurrent players per session with secure user authentication.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Jul 2024 - Sep 2024</div>
+                    <h3 class="timeline-title">Interactive Web Portfolio</h3>
+                    <div class="timeline-subtitle">Personal Project</div>
+                    <p class="timeline-desc">
+                        Developed responsive web applications using HTML, CSS, and JavaScript. Achieved significant improvements in user interaction metrics through optimized front-end performance and intuitive design patterns.
+                    </p>
+                </div>
+
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-date">Feb 2024 - Jun 2024</div>
+                    <h3 class="timeline-title">Autonomous Firefighting Robot</h3>
+                    <div class="timeline-subtitle">Embedded Systems (1st Place Presentation)</div>
+                    <p class="timeline-desc">
+                        Designed and implemented a control algorithm for a fire-fighting robot in C/C++. Secured 1st place among 15+ teams in the Robotics Championship for the best technical presentation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: var(--bg-latte);">
+        <div class="container">
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">Expertise</span>
+                <h2 class="section-title">Capabilities</h2>
+            </div>
+
+            <div class="skills-group">
+                <h3 class="reveal-element">Cybersecurity & Networking</h3>
+                <div class="skill-list">
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Penetration Testing</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> SOC Analysis & SIEM</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Splunk</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Wireshark</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Kali Linux & Admin</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Vulnerability Assessment</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h3 class="reveal-element">Development & Engineering</h3>
+                <div class="skill-list">
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Python</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> C++ & Algorithms</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Dart & Flutter</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Web (HTML/CSS/JS)</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> PHP</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h3 class="reveal-element">Architecture & Data</h3>
+                <div class="skill-list">
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Git & GitHub</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Firebase & Databases</div>
+                    <div class="skill-item reveal-element"><i class="fa-solid fa-circle"></i> Embedded Systems Basics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header reveal-element">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-line reveal-element">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:philopateerosama2004@gmail.com" class="contact-link">philopateerosama2004@gmail.com</a>
+                </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Aug 2026 - Present</div>
-                        <h3 class="timeline-title">Cybersecurity Trainee</h3>
-                        <p class="timeline-company">MCDR, Cairo, Egypt</p>
-                        <p class="timeline-description">Participating in an intensive 160-hour cybersecurity training program, emphasizing Security Operations Center (SOC) fundamentals and incident response. Analyzing simulated network threats using log analysis techniques.</p>
-                    </div>
+                <div class="contact-line reveal-element">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+201288093463" class="contact-link">012 8809 3463</a>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Aug 2026 - Present</div>
-                        <h3 class="timeline-title">LabyrinthAI (Active Defense System)</h3>
-                        <p class="timeline-company">Graduation Project</p>
-                        <p class="timeline-description">Architecting an intelligent active defense system integrating digital twin technology and reinforcement learning. Developing LLM-based data generation to simulate 100+ attack scenarios.</p>
-                    </div>
+                <div class="contact-line reveal-element">
+                    <span class="contact-label">Professional</span>
+                    <a href="https://www.linkedin.com/in/philopateer-osama-philo" target="_blank" class="contact-link">LinkedIn Profile</a>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jul 2025 - Aug 2025</div>
-                        <h3 class="timeline-title">Software Developer Intern</h3>
-                        <p class="timeline-company">HITS Solutions, Cairo, Egypt</p>
-                        <p class="timeline-description">Completed a 160-hour software development program. Collaborated to debug code and implement 3 new software modules, improving application stability by 15%.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 2025 - May 2025</div>
-                        <h3 class="timeline-title">El-Lamma Multiplayer Game</h3>
-                        <p class="timeline-company">Mobile App Development</p>
-                        <p class="timeline-description">Built and deployed a cross-platform Android multiplayer card game using Flutter and Firebase. Implemented secure user authentication and real-time database synchronization.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jul 2024 - Sep 2024</div>
-                        <h3 class="timeline-title">Interactive Web Portfolio</h3>
-                        <p class="timeline-company">Personal Project</p>
-                        <p class="timeline-description">Developed and deployed 3 responsive web applications using HTML, CSS, and JavaScript. Achieved a 20% improvement in user interaction metrics through optimized performance.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2023 - Mar 2024</div>
-                        <h3 class="timeline-title">ICPC Competitive Programming</h3>
-                        <p class="timeline-company">ECU Team Member</p>
-                        <p class="timeline-description">Solved over 50 complex algorithmic problems using C++. Reduced time/space complexity by up to 50% under strict 2-hour competitive constraints.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <div class="section-subtitle">Technical & Security Skills</div>
-            </div>
-            <div class="skills-grid">
                 
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-shield-alt"></i>
-                        Cybersecurity
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Penetration Testing & Ethical Hacking</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SOC Analysis & SIEM (Splunk)</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Network Security & Wireshark</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Linux Admin & Kali Linux</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-terminal"></i>
-                        Programming & Dev
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Python & Automation</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">C++ & Algorithms</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Dart & Flutter</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">HTML, CSS, JavaScript & PHP</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-network-wired"></i>
-                        Tools & Core Concepts
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Git & GitHub</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Algorithmic Problem Solving</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Embedded Systems Basics</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Firebase & Databases</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="section-subtitle">Let's Connect</div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <p><a href="mailto:Philopateerosama2004@gmail.com">Philopateerosama2004@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Phone</h4>
-                        <p><a href="tel:+201288093463">+20 128 809 3463</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>GitHub</h4>
-                        <p><a href="https://github.com/Philopateerosama" target="_blank" rel="noopener">github.com/Philopateerosama</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>LinkedIn</h4>
-                        <p><a href="https://www.linkedin.com/in/philopateer-osama-085316236/" target="_blank" rel="noopener">philopateer-osama</a></p>
-                    </div>
+                <div class="contact-line reveal-element">
+                    <span class="contact-label">Code & Projects</span>
+                    <a href="https://github.com/Philopateerosama" target="_blank" class="contact-link">GitHub Repository</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 Philopateer Osama. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/philopateer-osama-085316236/" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Philopateerosama" target="_blank" rel="noopener" class="social-link"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
+            <p>&copy; 2024 Philopateer Osama Onsy. Crafted with purpose.</p>
         </div>
     </footer>
 
     <script>
-        // DOM Content Loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            initNavigation();
-            initScrollAnimations();
-            initSkillBars();
-            initCVDownload();
-            initSmoothScrolling();
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
 
-        // Navigation functionality
-        function initNavigation() {
+            // 2. Mobile Menu Toggle
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const navLinks = document.querySelectorAll('.nav-link');
 
-            // Toggle mobile menu
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
+            hamburger.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
             });
 
-            // Close mobile menu when clicking on a link
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
+                link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
                 });
             });
 
-            // Navbar scroll effect
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 100) {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-                } else {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                    navbar.style.boxShadow = 'none';
-                }
-            });
-
-            // Active navigation link highlighting
-            const sections = document.querySelectorAll('section[id]');
-            
-            window.addEventListener('scroll', function() {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (window.scrollY >= (sectionTop - 200)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        function initSmoothScrolling() {
-            const navLinks = document.querySelectorAll('.nav-link, .btn-secondary');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        e.preventDefault();
-                        const targetSection = document.querySelector(href);
-                        if (targetSection) {
-                            const offsetTop = targetSection.offsetTop - 80;
-                            window.scrollTo({
-                                top: offsetTop,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-        }
-
-        // Scroll animations
-        function initScrollAnimations() {
+            // 3. THE NEW SCROLL OBSERVER (Staggered & Re-animating)
             const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                root: null,
+                // -150px means the user MUST scroll down until the element is 150px INSIDE the screen
+                // This ensures you are looking right at it when it decides to appear!
+                rootMargin: '0px 0px -150px 0px', 
+                threshold: 0
             };
 
-            const observer = new IntersectionObserver(function(entries) {
+            let delayCounter = 0;
+            let delayTimer = null;
+
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
+                        // Element has entered the view! 
+                        // Add a tiny delay based on how many elements are appearing at the same exact time
+                        entry.target.style.transitionDelay = `${delayCounter * 0.15}s`;
+                        entry.target.classList.add('is-visible');
+                        
+                        delayCounter++; // Next item gets a slightly longer delay (stagger effect)
+                        
+                        // Clear counter if no new elements appear within 100ms
+                        clearTimeout(delayTimer);
+                        delayTimer = setTimeout(() => {
+                            delayCounter = 0;
+                        }, 100);
+
+                    } else {
+                        // ELEMENT LEFT THE SCREEN!
+                        // Remove the class so it HIDES again. 
+                        // Next time you scroll down to it, it will re-animate beautifully!
+                        entry.target.classList.remove('is-visible');
+                        entry.target.style.transitionDelay = '0s'; // Reset delay
                     }
                 });
             }, observerOptions);
 
-            const animateElements = document.querySelectorAll('.timeline-item, .skill-category, .contact-item, .about-text, .about-image');
-            animateElements.forEach(el => {
+            const revealElements = document.querySelectorAll('.reveal-element');
+            revealElements.forEach(el => {
                 observer.observe(el);
             });
 
-            const style = document.createElement('style');
-            style.textContent = `
-                .timeline-item, .skill-category, .contact-item, .about-text, .about-image {
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: all 0.6s ease;
-                }
-                .timeline-item.animate-in, .skill-category.animate-in, .contact-item.animate-in, .about-text.animate-in, .about-image.animate-in {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        // Skill bars animation
-        function initSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            const skillObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const progressBar = entry.target;
-                        const width = progressBar.getAttribute('data-width');
-                        setTimeout(() => {
-                            progressBar.style.width = width + '%';
-                        }, 200);
-                        skillObserver.unobserve(progressBar);
+            // 4. Smooth Scrolling for Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
                 });
-            }, { threshold: 0.5 });
-
-            skillBars.forEach(bar => {
-                skillObserver.observe(bar);
             });
-        }
 
-        // Notification system
-        function showNotification(message, type = 'info') {
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) existingNotification.remove();
-            
-            const notification = document.createElement('div');
-            notification.className = `notification notification-${type}`;
-            notification.textContent = message;
-            
-            notification.style.cssText = `
-                position: fixed; top: 100px; right: 20px;
-                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
-                color: white; padding: 1rem 1.5rem; border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); z-index: 10000;
-                transform: translateX(400px); transition: transform 0.3s ease;
-            `;
-            
-            document.body.appendChild(notification);
-            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(400px)';
-                setTimeout(() => {
-                    if (notification.parentNode) notification.remove();
-                }, 300);
-            }, 5000);
-        }
-
-        // CV Download functionality
-        function initCVDownload() {
+            // 5. CV Download Simulation
             const downloadBtn = document.getElementById('downloadCV');
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', function() {
                     const link = document.createElement('a');
-                    // Pointing directly to the verbatim file name specified
                     link.href = 'Philopateer Osama CV.pdf';
                     link.download = 'Philopateer Osama CV.pdf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                     
-                    showNotification('CV download started!', 'success');
-                    
                     const originalText = downloadBtn.innerHTML;
-                    downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-                    downloadBtn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
-                    
+                    downloadBtn.innerHTML = 'Downloaded <i class="fa-solid fa-check" style="font-size: 0.8rem;"></i>';
                     setTimeout(() => {
                         downloadBtn.innerHTML = originalText;
-                        downloadBtn.style.background = '';
                     }, 2000);
                 });
             }
-        }
-
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-            const style = document.createElement('style');
-            style.textContent = `
-                body { opacity: 0; transition: opacity 0.5s ease; }
-                body.loaded { opacity: 1; }
-                .hero-content { animation: fadeInUp 1s ease forwards; }
-                @keyframes fadeInUp {
-                    from { opacity: 0; transform: translateY(50px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-            `;
-            document.head.appendChild(style);
         });
     </script>
 </body>
